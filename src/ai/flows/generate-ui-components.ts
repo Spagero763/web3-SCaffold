@@ -39,6 +39,14 @@ const prompt = ai.definePrompt({
   prompt: `You are an AI UI component generator expert specializing in creating React components for interacting with smart contracts.
 
   Based on the provided smart contract ABI, generate a set of React components using Next.js 14 (App Router), TailwindCSS, Wagmi, and RainbowKit.
+  
+  Make sure to handle all function types (read, write, payable) and events from the ABI.
+  - For write and payable functions, generate a form with inputs for all parameters.
+  - For read functions, generate a component that displays the data.
+  - For events, generate a component that listens to and displays event logs.
+  - Group functions and events into cards with appropriate titles and descriptions.
+  - Use lucide-react for icons.
+
   Consider the following UI style guidelines:
   - Primary color: {{{primaryColor}}}
   - Background color: {{{backgroundColor}}}
@@ -54,9 +62,13 @@ const prompt = ai.definePrompt({
   Contract Name: {{{contractName}}}
 
   Ensure that the generated components include:
+  - A main page component that orchestrates all the generated components.
   - Dynamic forms for interacting with contract functions, handling different input types (address, uint256, string, etc.).
   - Display components for showing fetched data from the contract in a structured and user-friendly format.
-  - Appropriate testing stubs and sample calls.
+  - Components to display and listen to contract events.
+  - Use the provided wagmi hooks like useWriteContract, useReadContract, useWatchContractEvent.
+  - Ensure all necessary imports from 'react', 'wagmi', '@tanstack/react-query', 'lucide-react', and other libraries are included.
+  - The final output should be a single block of JSX code containing all the generated components.
 
   Return the generated UI components as a string of JSX code.
 `,
@@ -73,10 +85,3 @@ const generateUIComponentsFlow = ai.defineFlow(
     return output!;
   }
 );
-
-
-
-
-
-
-

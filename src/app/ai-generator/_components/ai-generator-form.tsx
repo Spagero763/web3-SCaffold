@@ -35,8 +35,8 @@ export function AIGeneratorForm() {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            contractName: "",
-            abi: "",
+            contractName: "TipJar",
+            abi: '[{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"},{"indexed":false,"internalType":"string","name":"message","type":"string"}],"name":"Tipped","type":"event"},{"inputs":[{"internalType":"address payable","name":"_to","type":"address"},{"internalType":"string","name":"_message","type":"string"}],"name":"tip","outputs":[],"stateMutability":"payable","type":"function"}]',
         },
     });
 
@@ -129,9 +129,7 @@ export function AIGeneratorForm() {
                     <div className="relative flex-grow">
                         <ScrollArea className="absolute inset-0">
                             <pre className="p-4 rounded-md bg-muted text-muted-foreground text-sm font-code">
-                                <code>
-                                    {generatedCode || "..."}
-                                </code>
+                                <Textarea readOnly value={generatedCode || "..."} className="w-full h-full" />
                             </pre>
                         </ScrollArea>
                         {generatedCode && (
