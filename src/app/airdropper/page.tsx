@@ -1,15 +1,21 @@
+
 import { PageHeader } from "@/components/page-header";
 import { contracts } from "@/contracts/definitions";
 import { ContractCard } from "@/components/contract/contract-card";
 import { FunctionForm } from "@/components/contract/function-form";
 import { EventLogs } from "@/components/contract/event-logs";
-import { FileCode, History, Pencil } from "lucide-react";
+import { History, Pencil } from "lucide-react";
 
 export default function AirdropperPage() {
     const contract = contracts.airdropper;
 
     const writeFunctions = contract.abi.filter(item => item.type === 'function' && (item.stateMutability === 'nonpayable' || item.stateMutability === 'payable'));
     const events = contract.abi.filter(item => item.type === 'event');
+
+    const functionDescriptions: { [key: string]: string } = {
+        airdropAmounts: "Distribute varying amounts of an ERC20 token to multiple recipients.",
+        airdropEqual: "Distribute an equal amount of an ERC20 token to multiple recipients."
+    };
     
     return (
         <div>
@@ -22,7 +28,7 @@ export default function AirdropperPage() {
                                 <ContractCard
                                     key={item.name}
                                     title={item.name}
-                                    description={`Execute the ${item.name} function.`}
+                                    description={functionDescriptions[item.name] || `Execute the ${item.name} function.`}
                                     icon={Pencil}
                                 >
                                     <FunctionForm abiItem={item} contractAddress={contract.address} />
