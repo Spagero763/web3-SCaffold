@@ -129,7 +129,7 @@ export function AIGeneratorForm() {
                     <div className="relative flex-grow">
                         <ScrollArea className="absolute inset-0">
                             <pre className="p-4 rounded-md bg-muted text-muted-foreground text-sm font-code">
-                                <Textarea readOnly value={generatedCode || "..."} className="w-full h-full" />
+                                <Textarea readOnly value={generatedCode || "..."} className="w-full h-full bg-transparent border-0 focus:ring-0" />
                             </pre>
                         </ScrollArea>
                         {generatedCode && (
