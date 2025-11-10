@@ -12,6 +12,7 @@ import {
   Heart,
   Bot,
   LayoutDashboard,
+  Box,
 } from 'lucide-react';
 import { tipJarAbi } from './abis/tip-jar';
 import { badgeNftAbi } from './abis/badge-nft';
@@ -130,5 +131,10 @@ export const mainNavItems = [
         name: 'AI Generator',
         icon: Bot,
         page: '/ai-generator',
+    },
+    {
+        name: 'Reown App',
+        icon: Box,
+        page: '/reown-app',
     }
 ]
