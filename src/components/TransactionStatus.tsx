@@ -48,7 +48,7 @@ export function TransactionStatus({
           <div className="flex gap-2">
             <Button variant="outline" size="sm" asChild>
               <a
-                href={\\/tx/\\}
+                href={`${explorerUrl}/tx/${txHash}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
